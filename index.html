@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Alfred Arcifa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #667eea;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .header-content h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .header-content .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            padding: 0 40px 40px 40px;
+        }
+        
+        .section {
+            margin: 40px 0;
+        }
+        
+        .section h2 {
+            font-size: 1.8em;
+            color: #667eea;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            font-weight: 400;
+        }
+        
+        .profile-summary {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #555;
+            background: #f8f9fa;
+            padding: 25px;
+            border-left: 4px solid #667eea;
+            margin: 30px 0;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 20px 0;
+        }
+        
+        .skill-category h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background: #e8f2ff;
+            color: #667eea;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+        
+        .experience-item {
+            margin: 30px 0;
+            padding: 25px;
+            background: #fafbfc;
+            border-left: 4px solid #764ba2;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .experience-title h3 {
+            color: #333;
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+        
+        .experience-role {
+            color: #764ba2;
+            font-weight: 600;
+            font-size: 1em;
+        }
+        
+        .experience-period {
+            color: #666;
+            font-weight: 500;
+            background: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9em;
+        }
+        
+        .experience-description ul {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .experience-description li {
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .experience-description li::before {
+            content: "▶";
+            color: #667eea;
+            font-size: 0.8em;
+            position: absolute;
+            left: 0;
+        }
+        
+        .tech-stack {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .tech-stack strong {
+            color: #764ba2;
+        }
+        
+        .key-projects {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .project-item {
+            margin: 20px 0;
+        }
+        
+        .project-item h4 {
+            color: #667eea;
+            font-size: 1.2em;
+            margin-bottom: 8px;
+        }
+        
+        .project-subtitle {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            color: #666;
+            border-top: 1px solid #eee;
+        }
+        
+        @media print {
+            .container {
+                box-shadow: none;
+                max-width: none;
+            }
+            
+            .header {
+                break-inside: avoid;
+            }
+            
+            .section {
+                break-inside: avoid;
+            }
+            
+            .experience-item {
+                break-inside: avoid;
+                margin: 20px 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+            
+            .main-content {
+                padding: 0 20px 20px 20px;
+            }
+            
+            .experience-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="photo">AA</div>
+            <div class="header-content">
+                <h1>ALFRED ARCIFA</h1>
+                <div class="subtitle">Senior Mobile Developer | Hybrid Architecture Specialist | Client Management Expert</div>
+                <div class="contact-info">
+                    📧 alfred.arcifa@soprasteria.com<br>
+                    🏢 Sopra Steria
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="profile-summary">
+                <strong>Senior Mobile Developer con 10+ anni di esperienza</strong> in sviluppo di applicazioni mobile enterprise, specializzato in <strong>architetture ibride multi-piattaforma</strong> con focus su <strong>Ionic/Angular</strong> e <strong>React Native</strong>. Comprovata esperienza nella <strong>gestione diretta di stakeholder strategici</strong> e <strong>team leadership</strong> per progetti enterprise complessi, con expertise in <strong>SSR optimization</strong>, <strong>performance tuning</strong> e <strong>digital transformation</strong>.
+            </div>
+
+            <section class="section">
+                <h2>COMPETENZE TECNICHE</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Mobile Development</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Ionic/Angular</span>
+                            <span class="skill-tag">React Native</span>
+                            <span class="skill-tag">SSR & Angular Universal</span>
+                            <span class="skill-tag">Redux/NgRx</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">RxJS</span>
+                            <span class="skill-tag">Performance Optimization</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Architecture & Integration</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Enterprise Architecture</span>
+                            <span class="skill-tag">API Integration</span>
+                            <span class="skill-tag">Mobile Payments</span>
+                            <span class="skill-tag">Capacitor Native</span>
+                            <span class="skill-tag">CI/CD Pipeline</span>
+                            <span class="skill-tag">Responsive UI/UX</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>ESPERIENZA PROFESSIONALE</h2>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="experience-title">
+                            <h3>Major Electronics Retailer | eCommerce Platform</h3>
+                            <div class="experience-role">Senior Frontend Architect & UX Technology Lead</div>
+                        </div>
+                        <div class="experience-period">09/2024 - Presente</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li><strong>Enterprise Digital Transformation</strong>: Migrazione e-commerce con architettura ibrida Ionic/Angular</li>
+                            <li><strong>SSR Optimization</strong>: Implementazione Angular Universal con engine pool pattern e caching avanzato</li>
+                            <li><strong>Technical Leadership</strong>: Guida strategica team frontend e SME per Angular/Ionic architecture</li>
+                            <li><strong>Stakeholder Management</strong>: Gestione completa aspettative business e coordinamento cross-functional</li>
+                            <li><strong>High-Traffic Architecture</strong>: Sistemi scalabili per gestione picchi con pattern enterprise (Facade, Repository, Service Layer)</li>
+                        </ul>
+                        <div class="tech-stack"><strong>Tech Stack:</strong> Ionic 7, Angular 17, TypeScript, NgRx, Angular Universal, SSR</div>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="experience-title">
+                            <h3>Wholesale Distribution & Automotive OEM | Enterprise Solutions</h3>
+                            <div class="experience-role">Solution Architect & Team Leader</div>
+                        </div>
+                        <div class="experience-period">2023 - Presente</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li><strong>B2B Distribution Tools</strong>: Team leadership e technical architecture per sistemi enterprise</li>
+                            <li><strong>Fleet Management System</strong>: End-to-end solution da requirements a deployment con IoT integration</li>
+                            <li><strong>Enterprise Tooling</strong>: Technical leadership per applicazioni mission-critical</li>
+                        </ul>
+                        <div class="tech-stack"><strong>Tech Stack:</strong> Ionic Framework, Angular, TypeScript, SCSS</div>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="experience-title">
+                            <h3>Retail Chain | Mobile Application</h3>
+                            <div class="experience-role">Solution Architect & Team Leader</div>
+                        </div>
+                        <div class="experience-period">09/2021 - 2024</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li><strong>React Native Enterprise App</strong>: Sviluppo evolutivo per customer base estesa</li>
+                            <li><strong>Accessibility & Performance</strong>: Focus su user experience inclusiva e ottimizzazione</li>
+                            <li><strong>Team Coordination</strong>: Leadership tecnica e architectural decisions</li>
+                        </ul>
+                        <div class="tech-stack"><strong>Tech Stack:</strong> React Native, Redux, RxJS, TypeScript</div>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="experience-title">
+                            <h3>Leading Italian Bank | Mobile Banking Platform</h3>
+                            <div class="experience-role">System Engineer</div>
+                        </div>
+                        <div class="experience-period">09/2019 - 07/2021</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li><strong>Mission-Critical Banking App</strong>: Ionic/Angular development per 3M+ utenti attivi</li>
+                            <li><strong>Enterprise Design System</strong>: Implementazione con StorybookJS e metodologie BEM</li>
+                            <li><strong>Large-Scale Collaboration</strong>: Coordinamento multi-team (40+ sviluppatori)</li>
+                        </ul>
+                        <div class="tech-stack"><strong>Tech Stack:</strong> Ionic, Angular, TypeScript, Adobe Experience Manager</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="key-projects">
+                    <h2>PROGETTI CHIAVE ENTERPRISE</h2>
+                    
+                    <div class="project-item">
+                        <h4>ENTERPRISE ECOMMERCE TRANSFORMATION</h4>
+                        <div class="project-subtitle">Architettura enterprise scalabile per major electronics retailer</div>
+                        <ul>
+                            <li><strong>SSR Implementation</strong>: Angular Universal con Express.js e strategie caching avanzate</li>
+                            <li><strong>Multi-platform Strategy</strong>: Codice unificato per web, iOS, Android con UI adattiva</li>
+                            <li><strong>Enterprise Patterns</strong>: Facade, Repository, Service Layer per scalabilità high-traffic</li>
+                            <li><strong>Performance Critical</strong>: Gestione picchi utenti con lazy loading e memory optimization</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-item">
+                        <h4>BANKING MOBILE PLATFORM</h4>
+                        <div class="project-subtitle">Sistema mission-critical per 3M+ utenti attivi</div>
+                        <ul>
+                            <li><strong>Financial Services Architecture</strong>: Ionic/Angular con rigorosi standard sicurezza</li>
+                            <li><strong>Enterprise Design System</strong>: Componenti riutilizzabili con StorybookJS</li>
+                            <li><strong>Large-Scale Development</strong>: Coordinamento 40+ sviluppatori multi-team</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>FORMAZIONE & LINGUE</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px;">
+                    <div>
+                        <h3 style="color: #764ba2; margin-bottom: 10px;">Formazione</h3>
+                        <strong>Laurea in Informatica</strong><br>
+                        Università degli Studi di Catania | 2012<br>
+                        <em>Classe n. 26 - Scienze e Tecnologie Informatiche</em>
+                    </div>
+                    <div>
+                        <h3 style="color: #764ba2; margin-bottom: 10px;">Lingue</h3>
+                        <strong>Italiano:</strong> Madrelingua<br>
+                        <strong>Inglese:</strong> B1+ (Utente Autonomo)
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Disponibile per progetti strategici con focus su architetture mobile ibride, SSR optimization e team leadership</p>
+        </footer>
+    </div>
+</body>
+</html>
