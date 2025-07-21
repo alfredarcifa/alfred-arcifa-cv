@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Alfred Arcifa </title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.svg">
     <!-- Roboto font import -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
     <!-- Font Awesome CDN for icons -->
@@ -430,6 +434,81 @@
             font-size: 0.9em;
         }
 
+        /* PDF-specific styles - higher specificity without !important */
+        .pdf-mode {
+            background: #fff;
+        }
+
+        .pdf-mode .container {
+            background: #fff;
+        }
+
+        .pdf-mode .header {
+            background: #fff;
+            color: #000;
+            box-shadow: none;
+            text-shadow: none;
+            border-bottom: 2px solid #000;
+        }
+
+        .pdf-mode .header h1,
+        .pdf-mode .header .subtitle,
+        .pdf-mode .header .contact-info,
+        .pdf-mode .contact-list a {
+            color: #000;
+            text-shadow: none;
+        }
+
+        .pdf-mode .contact-icon,
+        .pdf-mode .contact-label,
+        .pdf-mode .contact-value {
+            color: #000;
+        }
+
+        .pdf-mode .profile-summary,
+        .pdf-mode .section,
+        .pdf-mode .experience-item,
+        .pdf-mode .key-projects,
+        .pdf-mode .footer {
+            background: #fff;
+            color: #000;
+            box-shadow: none;
+            border: none;
+            text-shadow: none;
+        }
+
+        .pdf-mode a,
+        .pdf-mode strong,
+        .pdf-mode h1,
+        .pdf-mode h2,
+        .pdf-mode h3,
+        .pdf-mode h4,
+        .pdf-mode h5,
+        .pdf-mode h6 {
+            color: #000;
+            text-shadow: none;
+        }
+
+        .pdf-mode .skill-tag {
+            background: #f5f5f5;
+            color: #000;
+            border: 1px solid #ccc;
+            box-shadow: none;
+        }
+
+        .pdf-mode .skill-progress {
+            background: #e0e0e0;
+        }
+
+        .pdf-mode .skill-progress-bar {
+            background: #666;
+        }
+
+        .pdf-mode .download-pdf-wrapper,
+        .pdf-mode .download-pdf-btn {
+            display: none;
+        }
+
         @media print {
             body {
                 background: #fff;
@@ -437,44 +516,43 @@
             .container {
                 background: #fff;
             }
-            .header, .profile-summary, .skills-grid, .experience-item, .key-projects, .footer {
+            .header, .profile-summary, .section, .experience-item, .key-projects, .footer {
                 background: #fff;
                 color: #000;
                 box-shadow: none;
+                border: none;
+                text-shadow: none;
+            }
+            .header {
+                background: #fff;
+            }
+            .header h1, .header .subtitle, .header .contact-info, .contact-list a {
+                color: #000;
+                text-shadow: none;
+            }
+            .contact-icon {
+                color: #000;
+            }
+            .contact-label, .contact-value {
+                color: #000;
             }
             a, strong, h1, h2, h3, h4, h5, h6 {
                 color: #000;
+                text-shadow: none;
             }
-        }
-
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                text-align: center;
-                padding: 20px;
+            .skill-tag {
+                background: #f5f5f5;
+                color: #000;
+                border: 1px solid #ccc;
             }
-
-            .main-content {
-                padding: 12px 16px 32px 16px;
+            .download-pdf-wrapper, .download-pdf-btn {
+                display: none;
             }
-
-            .section {
-                padding: 16px;
-                margin: 16px 0;
+            .skill-progress {
+                background: #e0e0e0;
             }
-
-            .experience-header {
-                flex-direction: column;
-                gap: 8px;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .education-section {
-                grid-template-columns: 1fr;
-                gap: 16px;
+            .skill-progress-bar {
+                background: #666;
             }
         }
     </style>
@@ -729,8 +807,7 @@
     ║     🐙 github.com/alfredarcifa | 🏢 Sopra Steria                            ║
     ║                                                                               ║
     ║     Type 'cv.info()' for more details or 'cv.vibeMode()' for surprises! 🎵   ║
-    ║                                                                               ║
-    ╚═══════════════════════════════════════════════════════════════════════════════╝
+    ║                                                                               ╚═══════════════════════════════════════════════════════════════════════════════╝
     `,
     'color: #0a66c2; font-family: monospace; font-size: 12px; line-height: 1.2;');
 
@@ -775,24 +852,13 @@
 
     // ...existing PDF generation code...
     document.getElementById('download-pdf').addEventListener('click', function () {
-        // Temporarily apply print styles for PDF
-        const style = document.createElement('style');
-        style.id = 'pdf-print-style';
-        style.innerHTML = `
-            body, .container {
-                background: #fff !important;
-                color: #000 !important;
-            }
-            .header, .profile-summary, .skills-grid, .experience-item, .key-projects, .footer {
-                background: #fff !important;
-                color: #000 !important;
-                box-shadow: none !important;
-            }
-            a, strong, h1, h2, h3, h4, h5, h6 {
-                color: #000 !important;
-            }
-        `;
-        document.head.appendChild(style);
+        // Hide the download button during PDF generation
+        const downloadBtn = document.querySelector('.download-pdf-wrapper');
+        downloadBtn.style.display = 'none';
+
+        // Add PDF mode class to body for clean styling
+        document.body.classList.add('pdf-mode');
+
         html2canvas(document.querySelector('.container'), {
             scale: 1,
             useCORS: true,
@@ -800,7 +866,7 @@
             width: document.querySelector('.container').offsetWidth,
             height: document.querySelector('.container').offsetHeight
         }).then(function(canvas) {
-            const imgData = canvas.toDataURL('image/jpeg', 0.85);
+            const imgData = canvas.toDataURL('image/jpeg', 0.95);
             const jsPDF = window.jspdf.jsPDF;
             const pdf = new jsPDF({
                 orientation: 'portrait',
@@ -825,8 +891,10 @@
             }
             pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
             pdf.save('Alfred_Arcifa_CV.pdf');
-            // Remove print style after PDF generation
-            document.head.removeChild(style);
+
+            // Clean up: remove PDF mode class and restore button
+            document.body.classList.remove('pdf-mode');
+            downloadBtn.style.display = 'block';
         });
     });
     </script>
