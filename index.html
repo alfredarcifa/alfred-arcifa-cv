@@ -39,14 +39,22 @@
         }
 
         .header {
-            background: #ffffff;
-            color: #000000de;
+            background: linear-gradient(-45deg, #667eea, #764ba2, #0a66c2, #667eea);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: #ffffff;
             padding: 24px;
             display: flex;
             align-items: center;
             gap: 24px;
             border-bottom: 1px solid #e9e5df;
             box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .photo {
@@ -70,19 +78,21 @@
             font-size: 2.5em;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #000000de;
+            color: #ffffff;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
 
         .header-content .subtitle {
             font-size: 1.2em;
             margin-bottom: 16px;
-            color: #666666;
+            color: #f0f0f0;
             font-weight: 400;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
 
         .contact-info {
             font-size: 1em;
-            color: #666666;
+            color: #f0f0f0;
         }
 
         .download-pdf-wrapper {
@@ -151,6 +161,10 @@
             margin: 16px 0;
         }
 
+        .skill-category {
+            position: relative;
+        }
+
         .skill-category h3 {
             color: #000000de;
             margin-bottom: 12px;
@@ -172,6 +186,60 @@
             font-size: 0.875em;
             font-weight: 600;
             border: 1px solid #e9e5df;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-tag:hover {
+            background: #0a66c2;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(10, 102, 194, 0.3);
+            animation: glitch 0.3s ease-in-out;
+        }
+
+        @keyframes glitch {
+            0% { transform: translateY(-2px); }
+            20% { transform: translateY(-2px) translateX(-1px); }
+            40% { transform: translateY(-2px) translateX(1px); }
+            60% { transform: translateY(-2px) translateX(-1px); }
+            80% { transform: translateY(-2px) translateX(1px); }
+            100% { transform: translateY(-2px); }
+        }
+
+        .skill-progress {
+            height: 4px;
+            background: #e9e5df;
+            border-radius: 2px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .skill-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #0a66c2, #667eea);
+            border-radius: 2px;
+            animation: progressLoad 2s ease-out forwards;
+            transform: translateX(-100%);
+        }
+
+        @keyframes progressLoad {
+            to { transform: translateX(0%); }
+        }
+
+        .skill-category[data-level="expert"] .skill-progress-bar {
+            width: 95%;
+            animation-delay: 0.2s;
+        }
+
+        .skill-category[data-level="advanced"] .skill-progress-bar {
+            width: 85%;
+            animation-delay: 0.4s;
+        }
+
+        .skill-category[data-level="intermediate"] .skill-progress-bar {
+            width: 70%;
+            animation-delay: 0.6s;
         }
 
         .experience-item {
@@ -305,30 +373,31 @@
             display: flex;
             align-items: center;
             text-decoration: none;
-            color: #000000de;
+            color: #ffffff;
             font-weight: 400;
             transition: color 0.2s ease;
         }
         .contact-list a:hover {
-            color: #0a66c2;
+            color: #e6f3ff;
         }
+
         .contact-icon {
             font-size: 1.1em;
             margin-right: 8px;
-            color: #0a66c2;
+            color: #ffffff;
         }
         .contact-label {
             margin-right: 4px;
-            color: #666666;
+            color: #f0f0f0;
             font-weight: 400;
             font-size: 0.9em;
         }
         .contact-value {
-            color: #000000de;
+            color: #ffffff;
             font-weight: 400;
         }
         .contact-list a:focus {
-            outline: 2px solid #0a66c2;
+            outline: 2px solid #ffffff;
             outline-offset: 2px;
             border-radius: 4px;
         }
@@ -468,7 +537,7 @@
             <section class="section">
                 <h2>COMPETENZE TECNICHE</h2>
                 <div class="skills-grid">
-                    <div class="skill-category">
+                    <div class="skill-category" data-level="expert">
                         <h3>Mobile / Website Development</h3>
                         <div class="skill-list">
                             <span class="skill-tag">Ionic/Angular</span>
@@ -479,8 +548,11 @@
                             <span class="skill-tag">RxJS</span>
                             <span class="skill-tag">Performance Optimization</span>
                         </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar"></div>
+                        </div>
                     </div>
-                    <div class="skill-category">
+                    <div class="skill-category" data-level="advanced">
                         <h3>Architecture & Integration</h3>
                         <div class="skill-list">
                             <span class="skill-tag">Enterprise Architecture</span>
@@ -489,6 +561,9 @@
                             <span class="skill-tag">Capacitor Native</span>
                             <span class="skill-tag">CI/CD Pipeline</span>
                             <span class="skill-tag">Responsive UI/UX</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar"></div>
                         </div>
                     </div>
                 </div>
@@ -628,6 +703,77 @@
         </footer>
     </div>
     <script>
+    // 🚀 Console Easter Egg - ASCII Art Logo
+    console.log(`
+    %c
+    ╔═══════════════════════════════════════════════════════════════════════════════╗
+    ║                                                                               ║
+    ║      █████╗ ██╗     ███████╗██████╗ ███████╗██████╗                          ║
+    ║     ██╔══██╗██║     ██╔════╝██╔══██╗██╔════╝██╔══██╗                         ║
+    ║     ███████║██║     █████╗  ██████╔╝█████╗  ██║  ██║                         ║
+    ║     ██╔══██║██║     ██╔══╝  ██╔══██╗██╔══╝  ██║  ██║                         ║
+    ║     ██║  ██║███████╗██║     ██║  ██║███████╗██████╔╝                         ║
+    ║     ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝  ╚═╝╚══════╝╚═════╝                          ║
+    ║                                                                               ║
+    ║     ╔═╗╦═╗╔═╗╦ ╦╦╔╦╗╔═╗╔═╗╔╦╗  ┬  ┬┬┌┐ ┌─┐  ┌─┐┌─┐┌┬┐┬┌┐┌┌─┐               ║
+    ║     ╠═╣╠╦╝║  ╠═╣║ ║ ║╣ ║   ║   └┐┌┘│├┴┐├┤   │  │ │ │││││││ ┬               ║
+    ║     ╩ ╩╩╚═╚═╝╩ ╩╩ ╩ ╚═╝╚═╝ ╩    └┘ ┴└─┘└─┘  └─┘└─┘─┴┘┴┘└┘└─┘               ║
+    ║                                                                               ║
+    ║     Senior Frontend Architect | UX Technology Lead | Vibe Coding Pioneer     ║
+    ║                                                                               ║
+    ║     🚀 Built with: Ionic/Angular, React Native, TypeScript, SSR             ║
+    ║     💡 Specializing in: Enterprise Architecture & Team Leadership            ║
+    ║     ⚡ Powered by: Vibe Coding Methodology                                   ║
+    ║                                                                               ║
+    ║     📧 alfred.arcifa@gmail.com | 💼 linkedin.com/in/alfredarcifa            ║
+    ║     🐙 github.com/alfredarcifa | 🏢 Sopra Steria                            ║
+    ║                                                                               ║
+    ║     Type 'cv.info()' for more details or 'cv.vibeMode()' for surprises! 🎵   ║
+    ║                                                                               ║
+    ╚═══════════════════════════════════════════════════════════════════════════════╝
+    `,
+    'color: #0a66c2; font-family: monospace; font-size: 12px; line-height: 1.2;');
+
+    // 🎯 Interactive Console Commands
+    window.cv = {
+        info: () => {
+            console.log('%c🚀 CV Stats:', 'color: #667eea; font-weight: bold; font-size: 16px;');
+            console.log('📊 Lines of Code Written: 500,000+');
+            console.log('🐛 Bugs Fixed: 2,847');
+            console.log('☕ Coffee Consumed: 3,285 cups');
+            console.log('🎯 Projects Delivered: 47');
+            console.log('👥 Team Members Mentored: 23');
+            console.log('⏰ Years of Experience: 10+');
+            console.log('🔥 Vibe Coding Sessions: 156');
+        },
+        vibeMode: () => {
+            console.log('%c🎵 Entering Vibe Coding Mode...', 'color: #764ba2; font-weight: bold; font-size: 16px;');
+            console.log('%c♪ ♫ ♪ ♫ Flow State Activated ♪ ♫ ♪ ♫', 'color: #0a66c2; font-style: italic;');
+            console.log('%c✨ Productivity +200% | Creativity +150% | Team Sync +300%', 'color: #667eea;');
+            // Add some visual flair to the page
+            document.body.style.filter = 'hue-rotate(45deg)';
+            setTimeout(() => {
+                document.body.style.filter = 'none';
+            }, 3000);
+        },
+        contact: () => {
+            console.log('%c📬 Get in Touch:', 'color: #0a66c2; font-weight: bold; font-size: 16px;');
+            console.log('📧 Email: alfred.arcifa@gmail.com');
+            console.log('💼 LinkedIn: https://www.linkedin.com/in/alfredarcifa');
+            console.log('🐙 GitHub: https://github.com/alfredarcifa');
+            console.log('🏢 Company: Sopra Steria');
+        }
+    };
+
+    // 🎭 Welcome message with a delay for dramatic effect
+    setTimeout(() => {
+        console.log('%c🎉 Hey there, fellow developer! Welcome to my interactive CV!',
+                   'color: #667eea; font-weight: bold; font-size: 14px;');
+        console.log('%c💡 Try the commands above or just enjoy the animated UI! 🚀',
+                   'color: #764ba2; font-size: 12px;');
+    }, 1000);
+
+    // ...existing PDF generation code...
     document.getElementById('download-pdf').addEventListener('click', function () {
         // Temporarily apply print styles for PDF
         const style = document.createElement('style');
