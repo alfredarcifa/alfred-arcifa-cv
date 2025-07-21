@@ -6,6 +6,8 @@
     <title>CV - Alfred Arcifa </title>
     <!-- Roboto font import -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <style>
         * {
             margin: 0;
@@ -18,18 +20,16 @@
             width: 100%;
             margin: 0;
             padding: 0;
-            background: #fff !important;
+            background: #fff;
         }
-
         body {
             font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
             min-height: 100vh;
             min-width: 100vw;
-            background: #fff !important;
+            background: #fff;
         }
-
         .container {
             width: 100vw;
             max-width: none;
@@ -77,6 +77,21 @@
         .contact-info {
             font-size: 1em;
             opacity: 0.9;
+        }
+
+        .download-pdf-wrapper {
+            text-align: right;
+            margin: 20px 40px 0 0;
+        }
+
+        .download-pdf-btn {
+            background: #667eea;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
         }
 
         .main-content {
@@ -233,18 +248,18 @@
 
         @media print {
             html, body, .container {
-                width: 100vw !important;
-                max-width: none !important;
-                background: #fff !important;
-                color: #000 !important;
+                width: 100vw;
+                max-width: none;
+                background: #fff;
+                color: #000;
             }
             .header, .profile-summary, .skills-grid, .experience-item, .key-projects, .footer {
-                background: #fff !important;
-                color: #000 !important;
-                box-shadow: none !important;
+                background: #fff;
+                color: #000;
+                box-shadow: none;
             }
             a, strong, h1, h2, h3, h4, h5, h6 {
-                color: #000 !important;
+                color: #000;
             }
         }
 
@@ -268,6 +283,42 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .contact-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .contact-list a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        .contact-icon {
+            font-size: 1.2em;
+            margin-right: 8px;
+            color: #0052cc; /* Accessible blue for icons */
+        }
+        .contact-label {
+            margin-right: 4px;
+            color: #222;
+            font-weight: 500;
+        }
+        .contact-value {
+            color: #444;
+            font-weight: 400;
+        }
+        .contact-list a:focus {
+            outline: 2px solid #0052cc;
+            outline-offset: 2px;
+        }
     </style>
     <!-- html2canvas CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -278,28 +329,52 @@
     <div class="container" role="main">
         <header class="header" aria-label="Intestazione profilo">
             <div class="photo" aria-hidden="true">
-                <img src="https://avatars.githubusercontent.com/u/1813054?v=4&size=120" alt="Foto profilo di Alfred Arcifa" />
+                <img src="https://media.licdn.com/dms/image/v2/D4D03AQGbz0dGyWuqvg/profile-displayphoto-shrink_200_200/B4DZRxSt68HEAY-/0/1737067520467?e=1755734400&v=beta&t=lYg2VWB38Kn0OUGL79569SX_6ppD1ZSvcFzihiWlH9M" alt="Foto profilo di Alfred Arcifa" width="120" height="120" />
             </div>
             <div class="header-content">
                 <h1>ALFRED ARCIFA</h1>
-                <div class="subtitle">Senior Mobile Developer | Hybrid Architecture Specialist | Client Management Expert</div>
-                <div class="contact-info">
-                    📧 <a href="mailto:alfred.arcifa@gmail.com" aria-label="Email Alfred Arcifa">alfred.arcifa@gmail.com</a><br>
-                    🏢 Sopra Steria<br>
-                    <nav aria-label="Social Links">
-                        <a href="https://www.linkedin.com/in/alfredarcifa" target="_blank" rel="noopener" aria-label="LinkedIn Alfred Arcifa">LinkedIn</a> |
-                        <a href="https://github.com/aarcifa" target="_blank" rel="noopener" aria-label="GitHub Alfred Arcifa">GitHub</a>
-                    </nav>
-                </div>
+                <p class="subtitle">Senior Frontend Architect | UX Technology Lead | Hybrid Architecture Specialist | Client Management Expert</p>
+                <address class="contact-info">
+                    <ul class="contact-list">
+                        <li>
+                            <a href="mailto:alfred.arcifa@gmail.com" class="contact-email" aria-label="Email Alfred Arcifa">
+                                <i class="fa-solid fa-envelope contact-icon" aria-hidden="true"></i>
+                                <span class="contact-label">Email:</span>
+                                <span class="contact-value">alfred.arcifa@gmail.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.soprasteria.it/" class="contact-company" target="_blank" rel="noopener" aria-label="Sopra Steria">
+                                <i class="fa-solid fa-building contact-icon" aria-hidden="true"></i>
+                                <span class="contact-label">Azienda:</span>
+                                <span class="contact-value">Sopra Steria</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/alfredarcifa" class="contact-linkedin" target="_blank" rel="noopener" aria-label="LinkedIn Alfred Arcifa">
+                                <i class="fa-brands fa-linkedin contact-icon" aria-hidden="true"></i>
+                                <span class="contact-label">LinkedIn:</span>
+                                <span class="contact-value">alfredarcifa</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/alfredarcifa" class="contact-github" target="_blank" rel="noopener" aria-label="GitHub Alfred Arcifa">
+                                <i class="fa-brands fa-github contact-icon" aria-hidden="true"></i>
+                                <span class="contact-label">GitHub:</span>
+                                <span class="contact-value">alfredarcifa</span>
+                            </a>
+                        </li>
+                    </ul>
+                </address>
             </div>
         </header>
-        <div style="text-align:right; margin: 20px 40px 0 0;">
-            <button id="download-pdf" aria-label="Scarica il CV in PDF" style="background:#667eea;color:#fff;padding:10px 20px;border:none;border-radius:5px;cursor:pointer;font-size:1em;">Download PDF</button>
+        <div class="download-pdf-wrapper">
+            <button id="download-pdf" type="button" class="download-pdf-btn" aria-label="Scarica il CV in PDF">Download PDF</button>
         </div>
         <main class="main-content">
-            <div class="profile-summary">
+            <section class="profile-summary" aria-label="Profilo professionale">
                 <strong>Senior Mobile Developer con 10+ anni di esperienza</strong> in sviluppo di applicazioni mobile enterprise, sviluppo web, specializzato in <strong>architetture ibride multi-piattaforma</strong> con focus su <strong>Ionic/Angular</strong> e <strong>React Native</strong>. Comprovata esperienza nella <strong>gestione diretta di stakeholder strategici</strong> e <strong>team leadership</strong> per progetti enterprise complessi, con expertise in <strong>SSR optimization</strong>, <strong>performance tuning</strong> e <strong>digital transformation</strong>.
-            </div>
+            </section>
 
             <section class="section">
                 <h2>COMPETENZE TECNICHE</h2>
