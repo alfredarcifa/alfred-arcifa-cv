@@ -48,9 +48,6 @@
             animation: gradientShift 15s ease infinite;
             color: #ffffff;
             padding: 24px;
-            display: flex;
-            align-items: center;
-            gap: 24px;
             border-bottom: 1px solid #e9e5df;
             box-shadow: 0 1px 3px rgba(0,0,0,0.08);
         }
@@ -78,6 +75,15 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.12);
         }
 
+        .header-content-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            max-width: 1128px;
+            margin: 0 auto;
+            position: relative;
+        }
+
         .header-content h1 {
             font-size: 2.5em;
             margin-bottom: 8px;
@@ -100,26 +106,39 @@
         }
 
         .download-pdf-wrapper {
-            text-align: right;
-            margin: 16px 24px 0 0;
+            position: absolute;
+            top: -8px;
+            right: 0;
+            z-index: 10;
         }
 
         .download-pdf-btn {
-            background: #0a66c2;
+            background: rgba(255, 255, 255, 0.2);
             color: #fff;
-            padding: 12px 24px;
+            padding: 12px;
             border: none;
-            border-radius: 24px;
+            border-radius: 50%;
             cursor: pointer;
-            font-size: 1em;
-            font-weight: 600;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
-            transition: all 0.2s ease;
+            font-size: 1.1em;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .download-pdf-btn:hover {
-            background: #004182;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.16);
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .download-pdf-btn:active {
+            transform: translateY(0);
         }
 
         .main-content {
@@ -564,49 +583,53 @@
 <body aria-label="Curriculum Vitae di Alfred Arcifa">
     <div class="container" role="main">
         <header class="header" aria-label="Intestazione profilo">
-            <div class="photo" aria-hidden="true">
-                <img src="profile-photo.jpg" alt="Foto profilo di Alfred Arcifa" width="160" height="160" />
-            </div>
-            <div class="header-content">
-                <h1>ALFRED ARCIFA</h1>
-                <p class="subtitle">Senior Frontend Architect | UX Technology Lead | Hybrid Architecture Specialist | Client Management Expert</p>
-                <address class="contact-info">
-                    <ul class="contact-list">
-                        <li>
-                            <a href="mailto:alfred.arcifa@gmail.com" class="contact-email" aria-label="Email Alfred Arcifa">
-                                <i class="fa-solid fa-envelope contact-icon" aria-hidden="true"></i>
-                                <span class="contact-label">Email:</span>
-                                <span class="contact-value">alfred.arcifa@gmail.com</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.soprasteria.it/" class="contact-company" target="_blank" rel="noopener" aria-label="Sopra Steria">
-                                <i class="fa-solid fa-building contact-icon" aria-hidden="true"></i>
-                                <span class="contact-label">Azienda:</span>
-                                <span class="contact-value">Sopra Steria</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.linkedin.com/in/alfredarcifa" class="contact-linkedin" target="_blank" rel="noopener" aria-label="LinkedIn Alfred Arcifa">
-                                <i class="fa-brands fa-linkedin contact-icon" aria-hidden="true"></i>
-                                <span class="contact-label">LinkedIn:</span>
-                                <span class="contact-value">alfredarcifa</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/alfredarcifa" class="contact-github" target="_blank" rel="noopener" aria-label="GitHub Alfred Arcifa">
-                                <i class="fa-brands fa-github contact-icon" aria-hidden="true"></i>
-                                <span class="contact-label">GitHub:</span>
-                                <span class="contact-value">alfredarcifa</span>
-                            </a>
-                        </li>
-                    </ul>
-                </address>
+            <div class="header-content-wrapper">
+                <div class="photo" aria-hidden="true">
+                    <img src="profile-photo.jpg" alt="Foto profilo di Alfred Arcifa" width="160" height="160" />
+                </div>
+                <div class="header-content">
+                    <h1>ALFRED ARCIFA</h1>
+                    <p class="subtitle">Senior Frontend Architect | UX Technology Lead | Hybrid Architecture Specialist | Client Management Expert</p>
+                    <address class="contact-info">
+                        <ul class="contact-list">
+                            <li>
+                                <a href="mailto:alfred.arcifa@gmail.com" class="contact-email" aria-label="Email Alfred Arcifa">
+                                    <i class="fa-solid fa-envelope contact-icon" aria-hidden="true"></i>
+                                    <span class="contact-label">Email:</span>
+                                    <span class="contact-value">alfred.arcifa@gmail.com</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.soprasteria.it/" class="contact-company" target="_blank" rel="noopener" aria-label="Sopra Steria">
+                                    <i class="fa-solid fa-building contact-icon" aria-hidden="true"></i>
+                                    <span class="contact-label">Azienda:</span>
+                                    <span class="contact-value">Sopra Steria</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/in/alfredarcifa" class="contact-linkedin" target="_blank" rel="noopener" aria-label="LinkedIn Alfred Arcifa">
+                                    <i class="fa-brands fa-linkedin contact-icon" aria-hidden="true"></i>
+                                    <span class="contact-label">LinkedIn:</span>
+                                    <span class="contact-value">alfredarcifa</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/alfredarcifa" class="contact-github" target="_blank" rel="noopener" aria-label="GitHub Alfred Arcifa">
+                                    <i class="fa-brands fa-github contact-icon" aria-hidden="true"></i>
+                                    <span class="contact-label">GitHub:</span>
+                                    <span class="contact-value">alfredarcifa</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </address>
+                </div>
+                <div class="download-pdf-wrapper">
+                    <button id="download-pdf" type="button" class="download-pdf-btn" aria-label="Scarica il CV in PDF">
+                        <i class="fa-solid fa-file-pdf"></i>
+                    </button>
+                </div>
             </div>
         </header>
-        <div class="download-pdf-wrapper">
-            <button id="download-pdf" type="button" class="download-pdf-btn" aria-label="Scarica il CV in PDF">Download PDF</button>
-        </div>
         <main class="main-content">
             <section class="profile-summary" aria-label="Profilo professionale">
                 <strong>Senior Mobile Developer con 10+ anni di esperienza</strong> in sviluppo di applicazioni mobile enterprise, sviluppo web, specializzato in <strong>architetture ibride multi-piattaforma</strong> con focus su <strong>Ionic/Angular</strong> e <strong>React Native</strong>. Comprovata esperienza nella <strong>gestione diretta di stakeholder strategici</strong> e <strong>team leadership</strong> per progetti enterprise complessi, con expertise in <strong>SSR optimization</strong>, <strong>performance tuning</strong> e <strong>digital transformation</strong>. Pioniere nell'adozione di metodologie <strong>vibe coding</strong> per il miglioramento della produttività del team e la creazione di soluzioni innovative.
