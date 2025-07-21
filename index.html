@@ -4,27 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Alfred Arcifa </title>
+    <!-- Roboto font import -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #fff !important;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
+            min-height: 100vh;
+            min-width: 100vw;
+            background: #fff !important;
+        }
+
+        .container {
+            width: 100vw;
+            max-width: none;
+            margin: 0;
+            box-shadow: none;
             background: #fff;
         }
-        
-        .container {
-            max-width: 210mm;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        
+
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -33,7 +46,7 @@
             align-items: center;
             gap: 30px;
         }
-        
+
         .photo {
             width: 120px;
             height: 120px;
@@ -48,32 +61,32 @@
             flex-shrink: 0;
             overflow: hidden;
         }
-        
+
         .header-content h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
             font-weight: 300;
         }
-        
+
         .header-content .subtitle {
             font-size: 1.2em;
             opacity: 0.9;
             margin-bottom: 20px;
         }
-        
+
         .contact-info {
             font-size: 1em;
             opacity: 0.9;
         }
-        
+
         .main-content {
             padding: 0 40px 40px 40px;
         }
-        
+
         .section {
             margin: 40px 0;
         }
-        
+
         .section h2 {
             font-size: 1.8em;
             color: #667eea;
@@ -82,7 +95,7 @@
             padding-bottom: 10px;
             font-weight: 400;
         }
-        
+
         .profile-summary {
             font-size: 1.1em;
             line-height: 1.7;
@@ -92,26 +105,26 @@
             border-left: 4px solid #667eea;
             margin: 30px 0;
         }
-        
+
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
             margin: 20px 0;
         }
-        
+
         .skill-category h3 {
             color: #764ba2;
             margin-bottom: 15px;
             font-size: 1.2em;
         }
-        
+
         .skill-list {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
         }
-        
+
         .skill-tag {
             background: #e8f2ff;
             color: #667eea;
@@ -120,7 +133,7 @@
             font-size: 0.9em;
             font-weight: 500;
         }
-        
+
         .experience-item {
             margin: 30px 0;
             padding: 25px;
@@ -128,7 +141,7 @@
             border-left: 4px solid #764ba2;
             border-radius: 0 8px 8px 0;
         }
-        
+
         .experience-header {
             display: flex;
             justify-content: space-between;
@@ -136,19 +149,19 @@
             margin-bottom: 15px;
             flex-wrap: wrap;
         }
-        
+
         .experience-title h3 {
             color: #333;
             font-size: 1.3em;
             margin-bottom: 5px;
         }
-        
+
         .experience-role {
             color: #764ba2;
             font-weight: 600;
             font-size: 1em;
         }
-        
+
         .experience-period {
             color: #666;
             font-weight: 500;
@@ -157,18 +170,18 @@
             border-radius: 15px;
             font-size: 0.9em;
         }
-        
+
         .experience-description ul {
             list-style: none;
             margin: 15px 0;
         }
-        
+
         .experience-description li {
             margin: 8px 0;
             padding-left: 20px;
             position: relative;
         }
-        
+
         .experience-description li::before {
             content: "▶";
             color: #667eea;
@@ -176,40 +189,40 @@
             position: absolute;
             left: 0;
         }
-        
+
         .tech-stack {
             margin-top: 15px;
             font-size: 0.9em;
             color: #666;
         }
-        
+
         .tech-stack strong {
             color: #764ba2;
         }
-        
+
         .key-projects {
             background: #f8f9ff;
             padding: 25px;
             border-radius: 8px;
             margin: 20px 0;
         }
-        
+
         .project-item {
             margin: 20px 0;
         }
-        
+
         .project-item h4 {
             color: #667eea;
             font-size: 1.2em;
             margin-bottom: 8px;
         }
-        
+
         .project-subtitle {
             font-style: italic;
             color: #666;
             margin-bottom: 10px;
         }
-        
+
         .footer {
             text-align: center;
             padding: 30px;
@@ -217,63 +230,72 @@
             color: #666;
             border-top: 1px solid #eee;
         }
-        
+
         @media print {
-            .container {
-                box-shadow: none;
-                max-width: none;
+            html, body, .container {
+                width: 100vw !important;
+                max-width: none !important;
+                background: #fff !important;
+                color: #000 !important;
             }
-            
-            .header {
-                break-inside: avoid;
+            .header, .profile-summary, .skills-grid, .experience-item, .key-projects, .footer {
+                background: #fff !important;
+                color: #000 !important;
+                box-shadow: none !important;
             }
-            
-            .section {
-                break-inside: avoid;
-            }
-            
-            .experience-item {
-                break-inside: avoid;
-                margin: 20px 0;
+            a, strong, h1, h2, h3, h4, h5, h6 {
+                color: #000 !important;
             }
         }
-        
+
         @media (max-width: 768px) {
             .header {
                 flex-direction: column;
                 text-align: center;
                 padding: 30px 20px;
             }
-            
+
             .main-content {
                 padding: 0 20px 20px 20px;
             }
-            
+
             .experience-header {
                 flex-direction: column;
                 gap: 10px;
             }
-            
+
             .skills-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
+    <!-- html2canvas CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- jsPDF CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
-<body>
-    <div class="container">
-        <header class="header">
-            <div class="photo"><img src="https://avatars.githubusercontent.com/u/1813054?v=4&size=120" alt="Alfred Arcifa Image Profile" /></div>
+<body aria-label="Curriculum Vitae di Alfred Arcifa">
+    <div class="container" role="main">
+        <header class="header" aria-label="Intestazione profilo">
+            <div class="photo" aria-hidden="true">
+                <img src="https://avatars.githubusercontent.com/u/1813054?v=4&size=120" alt="Foto profilo di Alfred Arcifa" />
+            </div>
             <div class="header-content">
                 <h1>ALFRED ARCIFA</h1>
                 <div class="subtitle">Senior Mobile Developer | Hybrid Architecture Specialist | Client Management Expert</div>
                 <div class="contact-info">
-                    📧 alfred.arcifa@gmail.com<br>
-                    🏢 Sopra Steria
+                    📧 <a href="mailto:alfred.arcifa@gmail.com" aria-label="Email Alfred Arcifa">alfred.arcifa@gmail.com</a><br>
+                    🏢 Sopra Steria<br>
+                    <nav aria-label="Social Links">
+                        <a href="https://www.linkedin.com/in/alfredarcifa" target="_blank" rel="noopener" aria-label="LinkedIn Alfred Arcifa">LinkedIn</a> |
+                        <a href="https://github.com/aarcifa" target="_blank" rel="noopener" aria-label="GitHub Alfred Arcifa">GitHub</a>
+                    </nav>
                 </div>
             </div>
         </header>
-
+        <div style="text-align:right; margin: 20px 40px 0 0;">
+            <button id="download-pdf" aria-label="Scarica il CV in PDF" style="background:#667eea;color:#fff;padding:10px 20px;border:none;border-radius:5px;cursor:pointer;font-size:1em;">Download PDF</button>
+        </div>
         <main class="main-content">
             <div class="profile-summary">
                 <strong>Senior Mobile Developer con 10+ anni di esperienza</strong> in sviluppo di applicazioni mobile enterprise, sviluppo web, specializzato in <strong>architetture ibride multi-piattaforma</strong> con focus su <strong>Ionic/Angular</strong> e <strong>React Native</strong>. Comprovata esperienza nella <strong>gestione diretta di stakeholder strategici</strong> e <strong>team leadership</strong> per progetti enterprise complessi, con expertise in <strong>SSR optimization</strong>, <strong>performance tuning</strong> e <strong>digital transformation</strong>.
@@ -389,7 +411,7 @@
             <section class="section">
                 <div class="key-projects">
                     <h2>PROGETTI CHIAVE ENTERPRISE</h2>
-                    
+
                     <div class="project-item">
                         <h4>ENTERPRISE ECOMMERCE TRANSFORMATION</h4>
                         <div class="project-subtitle">Architettura enterprise scalabile per major electronics retailer</div>
@@ -431,9 +453,66 @@
             </section>
         </main>
 
-        <footer class="footer">
-            <p>Disponibile per progetti strategici con focus su architetture mobile ibride, SSR optimization e team leadership</p>
+        <footer class="footer" aria-label="Footer">
+            &copy; 2025 Alfred Arcifa. Tutti i diritti riservati.
         </footer>
     </div>
+    <script>
+    document.getElementById('download-pdf').addEventListener('click', function () {
+        // Temporarily apply print styles for PDF
+        const style = document.createElement('style');
+        style.id = 'pdf-print-style';
+        style.innerHTML = `
+            body, .container {
+                background: #fff !important;
+                color: #000 !important;
+            }
+            .header, .profile-summary, .skills-grid, .experience-item, .key-projects, .footer {
+                background: #fff !important;
+                color: #000 !important;
+                box-shadow: none !important;
+            }
+            a, strong, h1, h2, h3, h4, h5, h6 {
+                color: #000 !important;
+            }
+        `;
+        document.head.appendChild(style);
+        html2canvas(document.querySelector('.container'), {
+            scale: 1,
+            useCORS: true,
+            backgroundColor: '#fff',
+            width: document.querySelector('.container').offsetWidth,
+            height: document.querySelector('.container').offsetHeight
+        }).then(function(canvas) {
+            const imgData = canvas.toDataURL('image/jpeg', 0.85);
+            const jsPDF = window.jspdf.jsPDF;
+            const pdf = new jsPDF({
+                orientation: 'portrait',
+                unit: 'mm',
+                format: 'a4',
+                putOnlyUsedFonts: true,
+                floatPrecision: 16
+            });
+            const pageWidth = 210;
+            const pageHeight = 297;
+            const container = document.querySelector('.container');
+            const containerWidthPx = container.offsetWidth;
+            const containerHeightPx = container.offsetHeight;
+            const pxToMm = 25.4 / 96;
+            const imgWidthMm = containerWidthPx * pxToMm;
+            const imgHeightMm = containerHeightPx * pxToMm;
+            let pdfWidth = pageWidth;
+            let pdfHeight = (imgHeightMm * pdfWidth) / imgWidthMm;
+            if (pdfHeight > pageHeight) {
+                pdfHeight = pageHeight;
+                pdfWidth = (imgWidthMm * pdfHeight) / imgHeightMm;
+            }
+            pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
+            pdf.save('Alfred_Arcifa_CV.pdf');
+            // Remove print style after PDF generation
+            document.head.removeChild(style);
+        });
+    });
+    </script>
 </body>
 </html>
