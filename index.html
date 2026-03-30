@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Alfred Arcifa </title>
+    <title>CV - Alfred Arcifa | Senior Manager IT Architecture</title>
+    <meta name="description" content="CV di Alfred Arcifa - Senior Manager, IT Architecture &amp; Tech Leadership presso Sopra Steria Group. 15+ anni di esperienza in frontend architecture, React, Angular, Ionic.">
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon.svg">
     <!-- Roboto font import -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;display=swap" rel="stylesheet">
     <!-- Font Awesome CDN for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <style>
@@ -17,6 +18,38 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        /* Skip to content link for keyboard/screen reader users */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 16px;
+            z-index: 9999;
+            background: #0a66c2;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 0 0 8px 8px;
+            font-weight: 600;
+            font-size: 1em;
+            text-decoration: none;
+            transition: top 0.2s ease;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Screen reader only utility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
         html, body {
@@ -75,6 +108,12 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.12);
         }
 
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .header-content-wrapper {
             display: flex;
             align-items: center;
@@ -131,10 +170,16 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
-        .download-pdf-btn:hover {
+        .download-pdf-btn:hover,
+        .download-pdf-btn:focus-visible {
             background: rgba(255, 255, 255, 0.3);
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .download-pdf-btn:focus {
+            outline: 2px solid #ffffff;
+            outline-offset: 2px;
         }
 
         .download-pdf-btn:active {
@@ -213,12 +258,19 @@
             cursor: pointer;
         }
 
-        .skill-tag:hover {
+        .skill-tag:hover,
+        .skill-tag:focus-visible {
             background: #0a66c2;
             color: #fff;
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(10, 102, 194, 0.3);
             animation: glitch 0.3s ease-in-out;
+            outline: none;
+        }
+
+        .skill-tag:focus {
+            outline: 2px solid #0a66c2;
+            outline-offset: 2px;
         }
 
         @keyframes glitch {
@@ -450,7 +502,7 @@
 
         .education-section {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 24px;
             margin-top: 16px;
         }
@@ -682,6 +734,34 @@
             }
         }
 
+        /* Accessibility: Reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .header {
+                animation: none;
+                background: linear-gradient(-45deg, #667eea, #764ba2, #0a66c2, #667eea);
+                background-size: 100% 100%;
+            }
+        }
+
+        /* High contrast mode support */
+        @media (forced-colors: active) {
+            .skill-tag {
+                border: 2px solid currentColor;
+            }
+            .skill-progress-bar {
+                background: Highlight;
+            }
+            .download-pdf-btn {
+                border: 2px solid currentColor;
+            }
+        }
+
         @media (max-width: 480px) {
             .header {
                 padding: 16px 12px;
@@ -740,16 +820,17 @@
     <!-- jsPDF CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
-<body aria-label="Curriculum Vitae di Alfred Arcifa">
-    <div class="container" role="main">
+<body>
+    <a href="#main-content" class="skip-link">Vai al contenuto principale</a>
+    <div class="container">
         <header class="header" aria-label="Intestazione profilo">
             <div class="header-content-wrapper">
-                <div class="photo" aria-hidden="true">
-                    <img src="profile-photo.jpg" alt="Foto profilo di Alfred Arcifa" width="160" height="160" />
+                <div class="photo">
+                    <img src="profile-photo.jpg" alt="Foto profilo di Alfred Arcifa" width="152" height="152" loading="lazy" />
                 </div>
                 <div class="header-content">
                     <h1>ALFRED ARCIFA</h1>
-                    <p class="subtitle">Senior Frontend Architect | UX Technology Lead | Hybrid Architecture Specialist | Client Management Expert</p>
+                    <p class="subtitle">Senior Manager | IT Architecture &amp; Tech Leadership | Frontend Architecture Expert</p>
                     <address class="contact-info">
                         <ul class="contact-list">
                             <li>
@@ -760,10 +841,17 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="tel:+393932358682" class="contact-phone" aria-label="Telefono Alfred Arcifa">
+                                    <i class="fa-solid fa-phone contact-icon" aria-hidden="true"></i>
+                                    <span class="contact-label">Tel:</span>
+                                    <span class="contact-value">393 235 8682</span>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="https://www.soprasteria.it/" class="contact-company" target="_blank" rel="noopener" aria-label="Sopra Steria">
                                     <i class="fa-solid fa-building contact-icon" aria-hidden="true"></i>
                                     <span class="contact-label">Azienda:</span>
-                                    <span class="contact-value">Sopra Steria</span>
+                                    <span class="contact-value">Sopra Steria Group</span>
                                 </a>
                             </li>
                             <li>
@@ -780,6 +868,13 @@
                                     <span class="contact-value">alfredarcifa</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="https://alfredarcifa.github.io/alfred-arcifa-cv/" class="contact-portfolio" target="_blank" rel="noopener" aria-label="Portfolio Alfred Arcifa">
+                                    <i class="fa-solid fa-globe contact-icon" aria-hidden="true"></i>
+                                    <span class="contact-label">Portfolio:</span>
+                                    <span class="contact-value">alfredarcifa.github.io</span>
+                                </a>
+                            </li>
                         </ul>
                     </address>
                 </div>
@@ -790,155 +885,313 @@
                 </div>
             </div>
         </header>
-        <main class="main-content">
-            <section class="profile-summary" aria-label="Profilo professionale">
-                <strong>Senior Mobile Developer con 10+ anni di esperienza</strong> in sviluppo di applicazioni mobile enterprise, sviluppo web, specializzato in <strong>architetture ibride multi-piattaforma</strong> con focus su <strong>Ionic/Angular</strong> e <strong>React Native</strong>. Comprovata esperienza nella <strong>gestione diretta di stakeholder strategici</strong> e <strong>team leadership</strong> per progetti enterprise complessi, con expertise in <strong>SSR optimization</strong>, <strong>performance tuning</strong> e <strong>digital transformation</strong>. Pioniere nell'adozione di metodologie <strong>vibe coding</strong> per il miglioramento della produttività del team e la creazione di soluzioni innovative.
+        <main class="main-content" id="main-content">
+            <section class="profile-summary" aria-labelledby="profile-heading">
+                <h2 id="profile-heading" class="sr-only">Profilo professionale</h2>
+                <p>Non ho mai creduto nei percorsi predefiniti. Con una laurea in Informatica come fondamento, ho <strong>hackerato il mio percorso nel Web</strong> attraverso sperimentazione audace e debugging continuo della mia conoscenza. In un ecosistema digitale dove l'unica costante è il cambiamento, la mia curiosità insaziabile compila costantemente nuove versioni di me stesso.</p>
+                <p style="margin-top:12px;">Come <strong>Senior Manager &amp; Architetto Frontend</strong> con <strong>15+ anni di esperienza</strong>, non scrivo solo codice – <strong>orchestro sinfonie digitali</strong> dove ogni componente risuona con l'utente:</p>
+                <ul class="experience-description" style="margin:12px 0;">
+                    <li>Architetto soluzioni <strong>React</strong> e <strong>Angular</strong> ad alte prestazioni che non solo eseguono, ma emozionano</li>
+                    <li>Fondo lo 0 e l'1 dell'ingegneria con l'arte dell'<strong>UX</strong>, deployando esperienze che catturano e coinvolgono</li>
+                    <li>Refactoro le sfide in opportunità, selezionando stack tecnologici non per hype ma per <strong>impatto rivoluzionario</strong></li>
+                    <li>Compilo visioni aziendali in <strong>architetture digitali</strong> che scalano sia in performance che in emozioni</li>
+                    <li>Forko team verso l'eccellenza tecnica, ispirando una cultura dove ogni <strong>PR è una masterclass</strong></li>
+                </ul>
+                <p><em style="color:#666; font-size:0.9em;">Questo game chiamato vita non ha versioni stable, solo continui beta testing di nuovi, entusiasmanti features da sbloccare con fame e codice negli occhi.</em></p>
             </section>
 
-            <section class="section">
-                <h2>COMPETENZE TECNICHE</h2>
+            <section class="section" aria-labelledby="skills-heading">
+                <h2 id="skills-heading">COMPETENZE TECNICHE</h2>
                 <div class="skills-grid">
                     <div class="skill-category" data-level="expert">
-                        <h3>Mobile / Website Development</h3>
+                        <h3>Frontend &amp; Mobile Development</h3>
                         <div class="skill-list">
-                            <span class="skill-tag">Ionic/Angular</span>
-                            <span class="skill-tag">React Native</span>
-                            <span class="skill-tag">SSR & Angular Universal</span>
-                            <span class="skill-tag">Redux/NgRx</span>
-                            <span class="skill-tag">TypeScript</span>
-                            <span class="skill-tag">RxJS</span>
-                            <span class="skill-tag">Performance Optimization</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">Angular</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">React</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">React Native</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">Ionic</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">Vue.js / NuxtJS</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">TypeScript</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">NgRx / Redux</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">RxJS</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">SSR &amp; Angular Universal</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">Capacitor Native</span>
                         </div>
-                        <div class="skill-progress">
+                        <div class="skill-progress" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="Livello competenza: 95%">
                             <div class="skill-progress-bar"></div>
                         </div>
                     </div>
                     <div class="skill-category" data-level="advanced">
-                        <h3>Architecture & Integration</h3>
+                        <h3>Architecture &amp; DevOps</h3>
                         <div class="skill-list">
-                            <span class="skill-tag">Enterprise Architecture</span>
-                            <span class="skill-tag">API Integration</span>
-                            <span class="skill-tag">Mobile Payments</span>
-                            <span class="skill-tag">Capacitor Native</span>
-                            <span class="skill-tag">CI/CD Pipeline</span>
-                            <span class="skill-tag">Responsive UI/UX</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">Enterprise Architecture</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">API Integration (REST/GraphQL)</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">CI/CD (GitLab, Netlify)</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">Cloud &amp; Digital Factory</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">Performance Optimization</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">Sicurezza Applicativa</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">Industrializzazione</span>
                         </div>
-                        <div class="skill-progress">
+                        <div class="skill-progress" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Livello competenza: 85%">
+                            <div class="skill-progress-bar"></div>
+                        </div>
+                    </div>
+                    <div class="skill-category" data-level="advanced">
+                        <h3>Leadership &amp; Strategy</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag" tabindex="0" role="listitem">Team Leadership</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">Gestione Stakeholder</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">Pianificazione Strategica</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">Rapporti C-Level</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">Agile / SCRUM</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">Mentoring Tecnico</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">Digital Transformation</span>
+                        </div>
+                        <div class="skill-progress" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Livello competenza: 85%">
+                            <div class="skill-progress-bar"></div>
+                        </div>
+                    </div>
+                    <div class="skill-category" data-level="intermediate">
+                        <h3>Design &amp; UX</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag" tabindex="0" role="listitem">UI/UX Design</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">StorybookJS</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">Figma / Sketch</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">WCAG Accessibility</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">BEM / SCSS</span>
+                            <span class="skill-tag" tabindex="0" role="listitem">Design System</span>
+                        </div>
+                        <div class="skill-progress" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="Livello competenza: 70%">
                             <div class="skill-progress-bar"></div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="section">
-                <h2>ESPERIENZA PROFESSIONALE</h2>
+            <section class="section" aria-labelledby="experience-heading">
+                <h2 id="experience-heading">ESPERIENZA PROFESSIONALE</h2>
 
+                <!-- SOPRA STERIA -->
                 <div class="experience-item">
                     <div class="experience-header">
                         <div class="experience-title">
-                            <h3>Major Electronics Retailer | eCommerce Platform</h3>
-                            <div class="experience-role">Senior Frontend Architect & UX Technology Lead</div>
+                            <h3>Sopra Steria Group</h3>
+                            <div class="experience-role">Senior Manager | Architettura IT &amp; Soluzioni Business</div>
                         </div>
-                        <div class="experience-period">09/2024 - Presente</div>
+                        <div class="experience-period">01/2026 - Presente</div>
                     </div>
                     <div class="experience-description">
                         <ul>
-                            <li><strong>Enterprise Digital Transformation</strong>: Migrazione e-commerce con architettura ibrida Ionic/Angular</li>
-                            <li><strong>SSR Optimization</strong>: Implementazione Angular Universal con engine pool pattern e caching avanzato</li>
-                            <li><strong>Technical Leadership</strong>: Guida strategica team frontend e SME per Angular/Ionic architecture</li>
-                            <li><strong>Stakeholder Management</strong>: Gestione completa aspettative business e coordinamento cross-functional</li>
-                            <li><strong>High-Traffic Architecture</strong>: Sistemi scalabili per gestione picchi con pattern enterprise (Facade, Repository, Service Layer)</li>
-                            <li><strong>Vibe Coding Implementation</strong>: Introduzione di metodologie di sviluppo collaborative basate sul flow e sull'energia del team per accelerare i tempi di delivery e migliorare la qualità del codice</li>
+                            <li><strong>Promozione a Senior Manager</strong>: Orienta architetture complesse per scalabilità, sicurezza, fattibilità economica/tecnica e esigenze business</li>
+                            <li><strong>Guida Architetti</strong>: Propone innovazioni SI, applica expertise multidisciplinare per il successo dei progetti</li>
+                            <li><strong>Strategie Client-Centriche</strong>: Sviluppo strategie long-term e rapporti tecnici C-level interni/esterni</li>
+                            <li><strong>Formazione &amp; Veglia Tecnologica</strong>: Diffusione know-how e cultura tech multidisciplinare</li>
+                            <li><strong>Management Motivazionale</strong>: Presentazione e convinzione soluzioni high-level per stakeholder</li>
                         </ul>
-                        <div class="tech-stack"><strong>Tech Stack:</strong> Ionic 8, Angular 18, TypeScript, NgRx, Angular Universal, SSR</div>
+                        <div class="tech-stack"><strong>Competenze:</strong> Architettura IT, Cloud, Digital Factory, Agile, Sicurezza, Business Solutions E2E</div>
+                        <span class="sr-only">Durata totale in Sopra Steria Group: 4 anni e 8 mesi</span>
                     </div>
                 </div>
 
                 <div class="experience-item">
                     <div class="experience-header">
                         <div class="experience-title">
-                            <h3>Wholesale Distribution & Automotive OEM | Enterprise Solutions</h3>
-                            <div class="experience-role">Solution Architect & Team Leader</div>
+                            <h3>Sopra Steria Group</h3>
+                            <div class="experience-role">Manager (B level) | Senior Frontend Architect &ndash; eCommerce Platform</div>
                         </div>
-                        <div class="experience-period">2023 - Presente</div>
+                        <div class="experience-period">01/2023 - Presente</div>
                     </div>
                     <div class="experience-description">
                         <ul>
-                            <li><strong>B2B Distribution Tools</strong>: Team leadership e technical architecture per sistemi enterprise</li>
-                            <li><strong>Fleet Management System</strong>: End-to-end solution da requirements a deployment con IoT integration</li>
-                            <li><strong>Enterprise Tooling</strong>: Technical leadership per applicazioni mission-critical</li>
+                            <li><strong>Enterprise eCommerce Transformation</strong>: Guida trasformazione tecnica piattaforma digitale di un importante retailer italiano di elettronica</li>
+                            <li><strong>Architettura Angular/Ionic</strong>: Progettazione architetture complesse garantendo scalabilità e sostenibilità economica</li>
+                            <li><strong>SSR Optimization</strong>: Implementazione Angular Universal con Express.js, gestione memoria e pool di engine</li>
+                            <li><strong>SME Angular/Ionic</strong>: Subject Matter Expert per ottimizzazione SSR e performance</li>
+                            <li><strong>Stakeholder Management</strong>: Collaborazione diretta con Direttori IS e coordinamento cross-funzionale UX, backend e business</li>
+                            <li><strong>Mentoring &amp; Agile</strong>: Sviluppo professionale team frontend e implementazione metodologie agili</li>
                         </ul>
-                        <div class="tech-stack"><strong>Tech Stack:</strong> Ionic Framework, Angular, TypeScript, SCSS</div>
+                        <div class="tech-stack"><strong>Tech Stack:</strong> Ionic 8, Angular 18, TypeScript, NgRx, Angular Universal, SSR, Express.js, Capacitor, CI/CD</div>
                     </div>
                 </div>
 
                 <div class="experience-item">
                     <div class="experience-header">
                         <div class="experience-title">
-                            <h3>Retail Chain | Mobile Application</h3>
-                            <div class="experience-role">Solution Architect & Team Leader</div>
+                            <h3>Sopra Steria Group</h3>
+                            <div class="experience-role">Manager (A level) | Solution Building &ndash; Mobile &amp; Web</div>
                         </div>
-                        <div class="experience-period">09/2021 - 2024</div>
+                        <div class="experience-period">08/2021 - 01/2023</div>
                     </div>
                     <div class="experience-description">
                         <ul>
-                            <li><strong>React Native Enterprise App</strong>: Sviluppo evolutivo per customer base estesa</li>
-                            <li><strong>Accessibility & Performance</strong>: Focus su user experience inclusiva e ottimizzazione</li>
-                            <li><strong>Team Coordination</strong>: Leadership tecnica e architectural decisions</li>
+                            <li><strong>Multi-Framework Expertise</strong>: React, React Native, Angular, Vue, Ionic per soluzioni enterprise</li>
+                            <li><strong>UX &amp; Accessibility</strong>: Implementazione design accessibili e inclusivi secondo standard WCAG</li>
+                            <li><strong>Solution Architecture</strong>: Analisi e allineamento soluzioni tecniche con obiettivi di business</li>
+                            <li><strong>Team Leadership</strong>: Leadership tecnica orientata alla motivazione, comunicazione efficace tra design, sviluppo e stakeholder</li>
                         </ul>
-                        <div class="tech-stack"><strong>Tech Stack:</strong> React Native, Redux, RxJS, TypeScript</div>
+                        <div class="tech-stack"><strong>Tech Stack:</strong> React, React Native, Angular, Vue, Ionic, TypeScript, JavaScript, GitLab CI/CD</div>
                     </div>
                 </div>
 
+                <!-- AVANADE -->
                 <div class="experience-item">
                     <div class="experience-header">
                         <div class="experience-title">
-                            <h3>Leading Italian Bank | Mobile Banking Platform</h3>
-                            <div class="experience-role">System Engineer</div>
+                            <h3>Avanade</h3>
+                            <div class="experience-role">User Experience Mobile/Web Engineer &ndash; Consultant</div>
                         </div>
-                        <div class="experience-period">09/2019 - 07/2021</div>
+                        <div class="experience-period">04/2019 - 07/2021</div>
                     </div>
                     <div class="experience-description">
                         <ul>
-                            <li><strong>Mission-Critical Banking App</strong>: Ionic/Angular development per 3M+ utenti attivi</li>
-                            <li><strong>Enterprise Design System</strong>: Implementazione con StorybookJS e metodologie BEM</li>
-                            <li><strong>Large-Scale Collaboration</strong>: Coordinamento multi-team</li>
+                            <li><strong>UniCredit (2019&ndash;2021)</strong>: App mobile banking Ionic/Angular per 3M+ utenti &ndash; ottimizzazione accessibilità e performance</li>
+                            <li><strong>Enterprise Design System</strong>: Creazione completa con StorybookJS e metodologia BEM (SCSS)</li>
+                            <li><strong>Digital Onboarding</strong>: Implementazione nuovo processo con AEM Headless CMS e Angular 9</li>
+                            <li><strong>WUD Milan (2019)</strong>: Progettazione sito wudmilan.it con architettura Jamstack (NuxtJS/NextJS, GraphQL, Apollo, DatoCMS)</li>
+                            <li><strong>Italo (2019)</strong>: Sviluppo interfaccia utente con Vue.js e FractalJS, motore ricerca crociere e vacanze</li>
+                            <li><strong>Large-Scale Collaboration</strong>: Team cross-funzionali fino a 40+ membri con metodologia SCRUM</li>
                         </ul>
-                        <div class="tech-stack"><strong>Tech Stack:</strong> Ionic, Angular, TypeScript, Adobe Experience Manager</div>
+                        <div class="tech-stack"><strong>Tech Stack:</strong> Ionic, Angular, Vue.js, React, TypeScript, SCSS, AEM, GraphQL, Apollo, StorybookJS</div>
+                    </div>
+                </div>
+
+                <!-- INTELLISYNC -->
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="experience-title">
+                            <h3>IntelliSync</h3>
+                            <div class="experience-role">Front-end Developer &amp; Web Product Designer</div>
+                        </div>
+                        <div class="experience-period">10/2017 - 03/2019</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li><strong>Previnet &ndash; Settore Pensionistico/Assicurativo</strong>: Sviluppo piattaforma SmartClaim con UX basata su analisi comportamentali</li>
+                            <li><strong>Prototipi Interattivi</strong>: Implementazione con principi di web design e animazioni avanzate</li>
+                            <li><strong>A/B Testing &amp; Analytics</strong>: Gestione test e analisi dati utilizzo per miglioramenti iterativi</li>
+                            <li><strong>Performance &amp; Usabilità</strong>: Ottimizzazione attraverso implementazioni tecniche e design</li>
+                        </ul>
+                        <div class="tech-stack"><strong>Tech Stack:</strong> AngularJS, JavaScript, SCSS (BEM), HTML5, Gulp, Grunt, Sketch, Figma, InVision</div>
+                    </div>
+                </div>
+
+                <!-- RESTORE -->
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="experience-title">
+                            <h3>ReStore &ndash; Start Selling Online</h3>
+                            <div class="experience-role">Front-end Developer &amp; UI/UX Designer</div>
+                        </div>
+                        <div class="experience-period">03/2017 - 10/2017</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li><strong>eCommerce Multi-Tenant</strong>: Soluzione SAAS per Carrefour Clicca e Ritira, Supermercati Decò, Pronto Spesa Gel Market</li>
+                            <li><strong>Conversion Optimization</strong>: Interfacce responsive con focus su conversione e usabilità cross-device</li>
+                            <li><strong>Analytics Avanzati</strong>: Heat maps, Google Tag Manager, A/B testing su componenti critici</li>
+                        </ul>
+                        <div class="tech-stack"><strong>Tech Stack:</strong> ASP.NET MVC, C#, Razor, SCSS, JavaScript, Google Analytics</div>
+                    </div>
+                </div>
+
+                <!-- OTO TRAVEL -->
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="experience-title">
+                            <h3>OTO Travel Technology</h3>
+                            <div class="experience-role">Front-end Developer &amp; UI/UX Designer</div>
+                        </div>
+                        <div class="experience-period">11/2014 - 03/2017</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li><strong>Piattaforme B2B/B2C Travel</strong>: Applicazioni web per Costa Crociere S.p.A. e Welcome Travel Group</li>
+                            <li><strong>White Label UI</strong>: Interfacce personalizzabili per piattaforme di prenotazione crociere e vacanze</li>
+                            <li><strong>Legacy Modernization</strong>: Ottimizzazione e modernizzazione codice legacy migliorando performance e manutenibilità</li>
+                        </ul>
+                        <div class="tech-stack"><strong>Tech Stack:</strong> JavaScript, AngularJS, Sass, Bootstrap, Foundation, OracleDB, MySQL</div>
+                    </div>
+                </div>
+
+                <!-- BE-ON -->
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="experience-title">
+                            <h3>Be-On</h3>
+                            <div class="experience-role">Software Developer &amp; Frontend Developer</div>
+                        </div>
+                        <div class="experience-period">06/2013 - 10/2014</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li><strong>Full-Stack Development</strong>: Sviluppo web con Bootstrap 3.0, jQuery, HTML5&#47;CSS3</li>
+                            <li><strong>3D Engine</strong>: Esperienza con Turbulenz (Engine 3D / JavaScript)</li>
+                        </ul>
+                        <div class="tech-stack"><strong>Tech Stack:</strong> Bootstrap, jQuery, HTML5, CSS3, ASP, PHP, Turbulenz 3D, MySQL, MSSQL</div>
+                    </div>
+                </div>
+
+                <!-- FREELANCE -->
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="experience-title">
+                            <h3>Freelance</h3>
+                            <div class="experience-role">Web Developer &amp; UI Designer</div>
+                        </div>
+                        <div class="experience-period">09/2011 - 08/2013</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li><strong>Frontend Web Development</strong>: Sviluppo siti web e user experience design</li>
+                            <li><strong>CMS Specialist</strong>: WordPress, Joomla!, Magento, PrestaShop</li>
+                            <li><strong>CSS Frameworks</strong>: Bootstrap, Foundation, HTML5Boilerplate, Modernizr</li>
+                        </ul>
+                        <div class="tech-stack"><strong>Tools:</strong> Adobe Photoshop/Illustrator, Sublime Text, CODA 2, WordPress, Magento</div>
                     </div>
                 </div>
             </section>
 
-            <section class="section">
+            <section class="section" aria-labelledby="projects-heading">
                 <div class="key-projects">
-                    <h2>PROGETTI CHIAVE ENTERPRISE</h2>
+                    <h2 id="projects-heading">PROGETTI CHIAVE ENTERPRISE</h2>
 
                     <div class="project-item">
                         <h4>ENTERPRISE ECOMMERCE TRANSFORMATION</h4>
-                        <div class="project-subtitle">Architettura enterprise scalabile per major electronics retailer</div>
+                        <div class="project-subtitle">Architettura enterprise scalabile per major electronics retailer italiano</div>
                         <ul>
-                            <li><strong>SSR Implementation</strong>: Ionic con Angular Universal OOTB e strategie caching avanzate</li>
-                            <li><strong>Multi-platform Strategy</strong>: Codice unificato per web, iOS, Android con UI adattiva</li>
+                            <li><strong>SSR Implementation</strong>: Ionic con Angular Universal, Express.js, gestione memoria e pool di engine</li>
+                            <li><strong>Multi-platform Strategy</strong>: Codice unificato per web, iOS, Android con Capacitor e UI adattiva</li>
                             <li><strong>Enterprise Patterns</strong>: Facade, Repository, Service Layer per scalabilità high-traffic</li>
                             <li><strong>Performance Critical</strong>: Gestione picchi utenti con lazy loading e memory optimization</li>
-                            <li><strong>Vibe Coding Methodology</strong>: Applicazione di principi collaborativi per sincronizzare il team di sviluppo e ottimizzare i flussi di lavoro creativi</li>
+                            <li><strong>CI/CD Frontend</strong>: Automazione build e deploy con focus su qualità</li>
                         </ul>
                     </div>
 
                     <div class="project-item">
-                        <h4>BANKING MOBILE PLATFORM</h4>
+                        <h4>UNICREDIT MOBILE BANKING PLATFORM</h4>
                         <div class="project-subtitle">Sistema mission-critical per 3M+ utenti attivi</div>
                         <ul>
                             <li><strong>Financial Services Architecture</strong>: Ionic/Angular con rigorosi standard sicurezza</li>
-                            <li><strong>Enterprise Design System</strong>: Componenti riutilizzabili con StorybookJS</li>
-                            <li><strong>Large-Scale Development</strong>: Coordinamento sviluppatori multi-team</li>
+                            <li><strong>Enterprise Design System</strong>: Componenti riutilizzabili con StorybookJS e BEM</li>
+                            <li><strong>Digital Onboarding</strong>: Nuovo processo con AEM Headless CMS e Angular 9</li>
+                            <li><strong>Large-Scale Development</strong>: Coordinamento sviluppatori 40+ in team cross-funzionali</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-item">
+                        <h4>JAMSTACK ENTERPRISE @ WUD MILAN</h4>
+                        <div class="project-subtitle">Architettura moderna per World Usability Day Milan</div>
+                        <ul>
+                            <li><strong>Architettura Jamstack</strong>: NuxtJS/NextJS, GraphQL, Apollo, DatoCMS</li>
+                            <li><strong>CI/CD Pipeline</strong>: Deploy automatizzato su Netlify con integrazione Git</li>
+                            <li><strong>Tech Talk</strong>: Presentazione pubblica tecnologia Jamstack per applicazioni enterprise</li>
                         </ul>
                     </div>
                 </div>
             </section>
 
-            <section class="section">
-                <h2>FORMAZIONE & LINGUE</h2>
+            <section class="section" aria-labelledby="education-heading">
+                <h2 id="education-heading">FORMAZIONE, CERTIFICAZIONI &amp; LINGUE</h2>
                 <div class="education-section">
                     <div class="education-item">
                         <h3>Formazione</h3>
@@ -949,18 +1202,27 @@
                         </div>
                     </div>
                     <div class="education-item">
+                        <h3>Certificazioni</h3>
+                        <div class="education-content">
+                            <strong>React Global Online Summit 22.2</strong><br>
+                            <em>Participation Certificate</em><br><br>
+                            <strong>Rome .NET Conference 2023</strong><br>
+                            <em>Participation Certificate</em>
+                        </div>
+                    </div>
+                    <div class="education-item">
                         <h3>Lingue</h3>
                         <div class="education-content">
                             <strong>Italiano:</strong> Madrelingua<br>
-                            <strong>Inglese:</strong> B1+ (Utente Autonomo)
+                            <strong>Inglese:</strong> Professional Working
                         </div>
                     </div>
                 </div>
             </section>
         </main>
 
-        <footer class="footer" aria-label="Footer">
-            &copy; 2025 Alfred Arcifa. Tutti i diritti riservati.
+        <footer class="footer" role="contentinfo">
+            <p>&copy; 2026 Alfred Arcifa. Tutti i diritti riservati.</p>
         </footer>
     </div>
     <script>
@@ -980,14 +1242,15 @@
     ║     ╠═╣╠╦╝║  ╠═╣║ ║ ║╣ ║   ║   └┐┌┘│├┴┐├┤   │  │ │ │││││││ ┬                  ║
     ║     ╩ ╩╩╚═╚═╝╩ ╩╩ ╩ ╚═╝╚═╝ ╩    └┘ ┴└─┘└─┘  └─┘└─┘─┴┘┴┘└┘└─┘                  ║
     ║                                                                               ║
-    ║     Senior Frontend Architect | UX Technology Lead | Vibe Coding Pioneer      ║
+    ║     Senior Manager | IT Architecture & Tech Leadership                        ║
+    ║     @ Sopra Steria Group                                                      ║
     ║                                                                               ║
-    ║     🚀 Built with: Ionic/Angular, React Native, TypeScript, SSR               ║
-    ║     💡 Specializing in: Enterprise Architecture & Team Leadership             ║
-    ║     ⚡ Powered by: Vibe Coding Methodology                                     ║
+    ║     🚀 Built with: Angular, React, Ionic, Vue, TypeScript, SSR                ║
+    ║     💡 Specializing in: Enterprise Architecture & Digital Transformation      ║
+    ║     ⚡ Powered by: 15+ years of caffeinated code & vibe coding                ║
     ║                                                                               ║
     ║     📧 alfred.arcifa@gmail.com | 💼 linkedin.com/in/alfredarcifa              ║
-    ║     🐙 github.com/alfredarcifa | 🏢 Sopra Steria                              ║
+    ║     🐙 github.com/alfredarcifa | 🏢 Sopra Steria Group                       ║
     ║                                                                               ║
     ║     Type 'cv.info()' for more details or 'cv.vibeMode()' for surprises! 🎵    ║
     ║                                                                               ║
@@ -999,30 +1262,55 @@
     window.cv = {
         info: () => {
             console.log('%c🚀 CV Stats:', 'color: #667eea; font-weight: bold; font-size: 16px;');
-            console.log('📊 Lines of Code Written: 500,000+');
-            console.log('🐛 Bugs Fixed: 2,847');
-            console.log('☕ Coffee Consumed: 3,285 cups');
-            console.log('🎯 Projects Delivered: 47');
-            console.log('👥 Team Members Mentored: 23');
-            console.log('⏰ Years of Experience: 10+');
-            console.log('🔥 Vibe Coding Sessions: 156');
+            console.log('📊 Lines of Code Written: 750,000+');
+            console.log('🐛 Bugs Fixed: 4,217');
+            console.log('☕ Coffee Consumed: 5,840 cups (alta concorrenza!)');
+            console.log('🎯 Projects Delivered: 60+');
+            console.log('👥 Team Members Mentored: 35+');
+            console.log('⏰ Years of Experience: 15+');
+            console.log('🏋️ Gym PRs Pushed: come pushare codice, con commit quotidiani');
+            console.log('🎨 Manga Drawn: prima della keyboard, c\'era la Wacom');
+            console.log('🔥 Vibe Coding Sessions: ∞');
+            console.log('🏢 Companies: 7 (Freelance → Be-On → OTO → ReStore → IntelliSync → Avanade → Sopra Steria)');
         },
         vibeMode: () => {
             console.log('%c🎵 Entering Vibe Coding Mode...', 'color: #764ba2; font-weight: bold; font-size: 16px;');
             console.log('%c♪ ♫ ♪ ♫ Flow State Activated ♪ ♫ ♪ ♫', 'color: #0a66c2; font-style: italic;');
             console.log('%c✨ Productivity +200% | Creativity +150% | Team Sync +300%', 'color: #667eea;');
-            // Add some visual flair to the page
-            document.body.style.filter = 'hue-rotate(45deg)';
-            setTimeout(() => {
-                document.body.style.filter = 'none';
-            }, 3000);
+            console.log('%c🏋️ Like bodybuilding: pushando i limiti come pusho codice', 'color: #764ba2;');
+            console.log('%c🎨 Dal manga alla UI: quel design system mentale ora vive nelle interfacce', 'color: #0a66c2;');
+            // Add some visual flair to the page (respects reduced motion)
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (!prefersReducedMotion) {
+                document.body.style.filter = 'hue-rotate(45deg)';
+                setTimeout(() => {
+                    document.body.style.filter = 'none';
+                }, 3000);
+            } else {
+                console.log('%c🎵 Vibe mode active! (animations disabled per your preferences)', 'color: #764ba2;');
+            }
         },
         contact: () => {
             console.log('%c📬 Get in Touch:', 'color: #0a66c2; font-weight: bold; font-size: 16px;');
             console.log('📧 Email: alfred.arcifa@gmail.com');
+            console.log('📱 Tel: 393 235 8682');
             console.log('💼 LinkedIn: https://www.linkedin.com/in/alfredarcifa');
             console.log('🐙 GitHub: https://github.com/alfredarcifa');
-            console.log('🏢 Company: Sopra Steria');
+            console.log('🌐 Portfolio: https://alfredarcifa.github.io/alfred-arcifa-cv/');
+            console.log('🏢 Company: Sopra Steria Group');
+        },
+        career: () => {
+            console.log('%c📈 Career Path:', 'color: #667eea; font-weight: bold; font-size: 16px;');
+            console.log('2011-2013  🏠 Freelance Web Developer');
+            console.log('2013-2014  💻 Be-On - Software Developer');
+            console.log('2014-2017  ✈️  OTO Travel - Frontend & UX');
+            console.log('2017       🛒 ReStore - eCommerce (Carrefour, Decò)');
+            console.log('2017-2019  🔧 IntelliSync - Product Designer & Dev');
+            console.log('2019-2021  🏦 Avanade - UX Engineer (UniCredit)');
+            console.log('2021-2023  📱 Sopra Steria - Manager A (Solution Building)');
+            console.log('2023-2026  🏗️  Sopra Steria - Manager B (eCommerce Architect)');
+            console.log('2026-now   🚀 Sopra Steria - SENIOR MANAGER');
+            console.log('%c⬆️ Level up! From Freelance to Senior Manager in 15 years!', 'color: #0a66c2; font-weight: bold;');
         }
     };
 
@@ -1030,8 +1318,10 @@
     setTimeout(() => {
         console.log('%c🎉 Hey there, fellow developer! Welcome to my interactive CV!',
                    'color: #667eea; font-weight: bold; font-size: 14px;');
-        console.log('%c💡 Try the commands above or just enjoy the animated UI! 🚀',
+        console.log('%c💡 Commands: cv.info() | cv.vibeMode() | cv.contact() | cv.career() 🚀',
                    'color: #764ba2; font-size: 12px;');
+        console.log('%c☕ Caffè ad alta concorrenza – le dipendenze che alimentano le sprint creative.',
+                   'color: #666; font-style: italic; font-size: 11px;');
     }, 1000);
 
     // ...existing PDF generation code...
